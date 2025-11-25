@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투어메이커 - 푸꾸옥 프리미엄 투어</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Hero Background */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1540202404-a2f29016b523?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .modal-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* Hide Scrollbar util */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <!-- 로고는 스크립트에서 제어됨 -->
+                <img id="logo-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s16000/logo.png" alt="Tourmaker Logo" class="h-9 md:h-10 object-contain transition-transform group-hover:scale-105">
+            </a>
+            <nav id="nav-links" class="hidden md:flex space-x-8 font-medium text-white/90">
+                <a href="#products" class="hover:text-amber-400 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-400 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">상품 라인업</a>
+                <a href="#resort" class="hover:text-amber-400 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-400 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Resorts</a>
+                <a href="#what-to-do" class="hover:text-amber-400 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-400 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Attractions</a>
+                <a href="#food" class="hover:text-amber-400 transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-400 after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Gourmet</a>
+            </nav>
+            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-amber-500 text-white px-6 py-2 rounded-full font-bold hover:bg-amber-600 transition-all transform hover:scale-105 shadow-lg text-sm flex items-center gap-2">
+                예약 문의 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center text-white px-4 relative">
+        <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        <div class="max-w-5xl mx-auto z-10 animate-fade-in-up">
+            <span class="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm md:text-base mb-6 tracking-[0.2em] uppercase font-semibold hover:bg-white/30 transition cursor-default">Tourmaker Vietnam</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight text-shadow">
+                Golden Sunset,<br>
+                <span class="text-amber-400">Phu Quoc</span>
+            </h1>
+            <p class="text-lg md:text-2xl mb-10 font-light text-slate-100 max-w-3xl mx-auto leading-relaxed text-shadow">
+                "베트남의 몰디브" 푸꾸옥.<br>
+                <strong>투어메이커</strong>가 제안하는 가장 확실한 솔루션
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#products" class="bg-white text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-amber-50 transition-all shadow-xl flex items-center justify-center gap-2 group">
+                    상품 확인하기 <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Lineup -->
+    <section id="products" class="py-20 bg-slate-50 -mt-20 relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Product Lineup</h2>
+                <div class="w-20 h-1 bg-amber-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 text-lg">하이엔드부터 가성비까지, 완벽한 포트폴리오</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Main Product: Premium -->
+                <div class="lg:col-span-6 bg-white rounded-3xl shadow-2xl border border-amber-200 overflow-hidden transform hover:-translate-y-2 transition duration-500 relative flex flex-col group">
+                    <div class="absolute top-0 right-0 bg-amber-500 text-white font-bold px-6 py-2 rounded-bl-2xl z-20 shadow-md">Signature</div>
+                    <div class="h-80 overflow-hidden relative">
+                        <img src="https://phuquocmarina.com/wp-content/uploads/2023/02/Main-Pool-2.jpg" alt="Premium Resort Infinity Pool" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
+                            <div>
+                                <h3 class="text-3xl font-bold text-white mb-1">양양 직항 시그니처 패키지</h3>
+                                <p class="text-amber-300 font-medium tracking-wide">2026 동계 한정 전세기 (3박5일)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                            강원도민을 위한 특별한 선물. 양양에서 떠나는 가장 편안한 푸꾸옥.<br>
+                            노팁·노옵션으로 품격은 높이고, 핵심 관광은 모두 담았습니다.
+                        </p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-slate-700"><span class="bg-amber-100 text-amber-600 p-1 rounded-full mr-3"><i data-lucide="check" class="w-4 h-4"></i></span> 전 일정 5성급 럭셔리 리조트</li>
+                            <li class="flex items-center text-slate-700"><span class="bg-amber-100 text-amber-600 p-1 rounded-full mr-3"><i data-lucide="check" class="w-4 h-4"></i></span> NO 가이드팁 / NO 옵션 강요</li>
+                            <li class="flex items-center text-slate-700"><span class="bg-amber-100 text-amber-600 p-1 rounded-full mr-3"><i data-lucide="check" class="w-4 h-4"></i></span> 마사지 90분 + 빈원더스 + 핵심쇼핑 2회</li>
+                        </ul>
+                        <button onclick="openModal('modal-premium')" class="w-full mt-auto bg-slate-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition shadow-lg flex justify-center items-center gap-2">
+                            상세 일정표 확인하기 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 flex flex-col gap-8">
+                    <!-- Sub Product 1: Value Pack -->
+                    <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden flex flex-col md:flex-row h-full hover:shadow-2xl transition duration-300 group">
+                        <div class="md:w-5/12 h-56 md:h-auto relative overflow-hidden">
+                            <img src="https://i0.wp.com/phuquoc.newworldhotels.com/wp-content/uploads/2025/07/Hero-DJI_20250519080932_0041_D.jpg?fit=2000%2C1333&ssl=1" alt="Value Resort" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">실속형</div>
+                        </div>
+                        <div class="p-8 md:w-7/12 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">스마트 실속팩 (세미)</h3>
+                            <p class="text-slate-500 mb-6 line-clamp-2">핵심 투어는 포함하고 거품은 제거했습니다. 합리적인 가격의 베스트셀러 상품입니다.</p>
+                            <div class="mt-auto">
+                                <button onclick="openModal('modal-value')" class="px-5 py-2.5 border-2 border-blue-600 text-blue-600 rounded-lg text-sm font-bold hover:bg-blue-600 hover:text-white transition flex items-center gap-2">
+                                    일정표 보기 <i data-lucide="external-link" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub Product 2: Airtelle -->
+                    <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden flex flex-col md:flex-row h-full hover:shadow-2xl transition duration-300 group">
+                        <div class="md:w-5/12 h-56 md:h-auto relative overflow-hidden">
+                            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/b0/c2/4f/private-beach-hotels.jpg?h=-1&s=1&w=1200" alt="Airtelle" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">자유여행</div>
+                        </div>
+                        <div class="p-8 md:w-7/12 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">내맘대로 에어텔</h3>
+                            <p class="text-slate-500 mb-6 line-clamp-2">항공권 + 뉴월드 풀빌라. 나머지는 100% 자유 일정으로 나만의 여행을 만드세요.</p>
+                            <div class="mt-auto">
+                                <button onclick="openModal('modal-airtelle')" class="px-5 py-2.5 border-2 border-green-600 text-green-600 rounded-lg text-sm font-bold hover:bg-green-600 hover:text-white transition flex items-center gap-2">
+                                    포함 내역 보기 <i data-lucide="external-link" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resorts Section -->
+    <section id="resort" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <span class="text-amber-500 font-bold tracking-wider text-sm uppercase">Where to Stay</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">지역별 엄선된 5성급 리조트</h2>
+                    <p class="text-slate-500 mt-2">최고의 휴식을 위한 프리미엄 라인업</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. 베스트웨스턴 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://q-xx.bstatic.com/xdata/images/hotel/max500/479466178.jpg?k=02abf7afca90ba244854d366967fad85d3177cbad097d61297d41096905cd434&o=" alt="Best Western Premier" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">남부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">베스트웨스턴 프리미어</h3>
+                        <p class="text-slate-500 text-sm mb-4">Best Western Premier Sonasea</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 남부 손씨아(Sonasea) 지역</li>
+                            <li>🏊‍♂️ 모던 스타일 + 키즈풀 보유</li>
+                            <li>🌊 해변 접근성 우수</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 2. 노보텔 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/764634174.jpg?k=81f98adf2167b40195b884a480c2355a7098f5d8c54e0becdf8715187a7258f2&o=" alt="Novotel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-green-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">중부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-green-600 transition-colors">노보텔 푸꾸옥 리조트</h3>
+                        <p class="text-slate-500 text-sm mb-4">Novotel Phu Quoc Resort</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 Truong Beach 지역</li>
+                            <li>🏡 고급 빌라형 숙소 보유</li>
+                            <li>👨‍👩‍👧‍👦 유아동반 가족에게 인기</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 3. 소나가 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/502566466.jpg?k=4f4cbf4b9183aec5d382b79b55bb96de61f8aa778c37e1709a79b4723c4265d5&o=" alt="Sonaga Beach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-green-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">중남부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-green-600 transition-colors">소나가 비치 리조트</h3>
+                        <p class="text-slate-500 text-sm mb-4">Sonaga Beach Resort</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 중남부 Truong Beach</li>
+                            <li>💰 가성비 좋은 5성급</li>
+                            <li>🛌 전용 해변과 아늑한 객실</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 4. 윈덤 그랜드 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://q-xx.bstatic.com/xdata/images/hotel/max500/499894729.jpg?k=0455ceffc77bfea7b45c106716804c80eaf7ddfa06145ef748a0a859e86fcb10&o=" alt="Wyndham Grand" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">북부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">윈덤 그랜드 푸꾸옥</h3>
+                        <p class="text-slate-500 text-sm mb-4">Wyndham Grand Phu Quoc</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 Bai Dai (북부) 지역</li>
+                            <li>🎡 테마파크 인접, 가족 단위 최적</li>
+                            <li>✨ 고급 휴양형 리조트</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 5. 래디슨 블루 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/04/d8/c0/radisson-blu-resort-phu.jpg" alt="Radisson Blu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">북부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">래디슨 블루 푸꾸옥</h3>
+                        <p class="text-slate-500 text-sm mb-4">Radisson Blu Resort</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 빈펄단지 인근 (북부)</li>
+                            <li>🤫 조용한 가족형 리조트</li>
+                            <li>🏰 빈원더스 접근성 탁월</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 6. 모벤픽 -->
+                <div class="group rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://pix10.agoda.net/hotelImages/21979978/0/3d8b10e7e1f4bea616a4ef6c032f126e.jpg?ce=0&s=414x232" alt="Movenpick" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-purple-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">북서부</div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">모벤픽 리조트</h3>
+                        <p class="text-slate-500 text-sm mb-4">Mövenpick Resort Waverly</p>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>📍 Ong Lang 지역</li>
+                            <li>🇨🇭 스위스 브랜드 고급 리조트</li>
+                            <li>🌅 환상적인 노을 맛집</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="what-to-do" class="py-20 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold tracking-wider text-sm uppercase">Highlights</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2">푸꾸옥 완전 정복</h2>
+                <p class="text-slate-500 mt-3">북부의 엔터테인먼트, 중부의 문화, 남부의 낭만까지.</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center mb-10 gap-2">
+                <button onclick="switchTab('tour-north')" id="btn-north" class="px-6 py-2 rounded-full font-bold text-sm transition-all bg-white text-slate-600 border border-slate-200 hover:bg-blue-50">북부 (Entertainment)</button>
+                <button onclick="switchTab('tour-central')" id="btn-central" class="px-6 py-2 rounded-full font-bold text-sm transition-all bg-white text-slate-600 border border-slate-200 hover:bg-green-50">중부 (Culture & Relax)</button>
+                <button onclick="switchTab('tour-south')" id="btn-south" class="px-6 py-2 rounded-full font-bold text-sm transition-all bg-orange-500 text-white shadow-lg shadow-orange-200">남부 (Romantic)</button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-200 min-h-[600px]">
+                
+                <!-- 북부 투어 -->
+                <div id="tour-north" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://static.vinwonders.com/production/2025/03/What-rides-are-at-VinWonders-Phu-Quoc-The-Wrath-of-Zeus.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🏰 빈원더스</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">대형 테마파크 + 수족관 복합, 가족 단위 여행 필수 코스</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://mblogthumb-phinf.pstatic.net/MjAyNTExMTRfMTQg/MDAxNzYzMDc5NTI3OTI5.Yd_dwVa1prpl5jPvYHB9BITD7ngmgPOIob-I3Yefnu4g.n8N-t5U0Ny-ZNaIf-or90BLrwgVFCMZvewuXw5dkpH0g.JPEG/%EB%B2%A0%ED%8A%B8%EB%82%A8_%ED%91%B8%EA%BE%B8%EC%98%A5_%EA%B7%B8%EB%9E%9C%EB%93%9C%EC%9B%94%EB%93%9C_%EC%9C%A0%EB%9F%BD%ED%92%8D%EA%B1%B0%EB%A6%AC-6-1.JPG?type=w800" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🎭 그랜드월드</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">유럽풍 거리, 야경, 퍼레이드, 유람선 투어 가능</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://static.vinwonders.com/production/The-Quintessence-of-Vietnam-1.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🎆 틴호아쇼</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">베트남 전통문화 + 기술 융합의 야간 뮤지컬 공연 쇼</p>
+                    </div>
+                </div>
+
+                <!-- 중부 투어 -->
+                <div id="tour-central" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://visitphuquoc.com.vn/VisitPhuQuoc/Post/XEM%20G%C3%8C%20L%C3%80M%20G%C3%8C/L%E1%BB%8Bch%20s%E1%BB%AD/1848/image-thumb__1848__720_jpg/Ch%C3%B9a%20H%E1%BB%99%20Qu%E1%BB%91c.eef5e39c.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🙏 호국사</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">푸꾸옥 중심의 사찰, 현지인 방문 잦은 성지</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://worldmatetravel.com/uploads/tranh-stream-phu-quoc.png-image-lsilaumg.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🏞️ 수오이짠 계곡</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">현지 자연 휴식 공간, 여름에 인기가 많음</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://static.vinwonders.com/2022/07/phu-quoc-prisobanner.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">⛓️ 코코넛 수용소</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">베트남 전쟁 당시 정치범 수용소 역사 장소</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2025/02/phu-quoc-pearl-farm-3-1024x576.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🦪 진주박물관</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">푸꾸옥 특산 진주 생산과정을 체험할 수 있는 전시장</p>
+                    </div>
+                     <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2025/01/%ED%9B%84%EC%B6%94-01-1024x576.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🌿 후추 농장</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">푸꾸옥 특산 ‘후추’ 직접 보고 구매할 수 있는 농장</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://static.hanatour.com/product/2021/08/31/0911dg9998/default.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🌃 쯔엉동 야시장</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">해산물, 길거리 음식, 기념품 등을 저렴하게 즐길 수 있는 야시장</p>
+                    </div>
+                </div>
+
+                <!-- 남부 투어 -->
+                <div id="tour-south" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2025/03/10.-%EB%94%98%EC%BB%A4%EC%9A%B0-%EC%82%AC%EC%9B%90.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-2 right-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded">Best Sunset</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🌅 딘커우 사원</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">푸꾸옥 남부 대표 사원, 해안 절벽 위에 있어 경치 탁월</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://static.vinwonders.com/production/Hon-Tam-Island-banner.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🏝️ 혼똔섬</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">케이블카로 이동하는 무인도 체험지, 해양 스포츠 인기</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://honthom.sunworld.vn/wp-content/uploads/2019/11/cam-bay-quai-vat-1.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🎢 썬월드</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">네이처파크(자연 체험) + 워터파크 복합 테마파크</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://sunsettown.com.vn/Image/286/image-thumb__286__1920_jpg/DJI_20231119184022_0162_D-3.e42f765e.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🏘️ 선셋 타운</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">이탈리아풍 해변 마을, ‘키스 더 브릿지’ 등 노을 명소</p>
+                    </div>
+                    <div class="tour-card group cursor-pointer">
+                        <div class="overflow-hidden rounded-xl h-48 mb-4 relative">
+                            <img src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2024/11/phu-quoc-island-night-market-2.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">🎆 부이페스트 투어</h3>
+                        <p class="text-sm text-slate-600 mb-3 line-clamp-2">야시장 + 퍼포먼스 + 먹거리 투어 결합된 문화 거리</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gourmet Section -->
+    <section id="food" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Decorative bg elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-16">
+                <div class="w-full">
+                    <span class="text-amber-500 font-bold tracking-wider text-sm uppercase">Gourmet Trip</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4 leading-tight">
+                        입맛대로 즐기는<br>미식의 즐거움
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed text-lg mb-2">
+                        현지의 풍미 가득한 로컬 음식부터, 부모님과 아이들도 편안한 한식까지.<br>
+                        엄선된 7가지 다이닝 옵션을 소개합니다.
+                    </p>
+                    <p class="text-xs text-slate-500 bg-slate-800/50 inline-block px-3 py-1 rounded-full border border-slate-700">
+                        * 현지 식재료 수급 상황에 따라 메뉴와 이미지는 일부 변경될 수 있습니다.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 1. Pho -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://www.recipetineats.com/uploads/2019/04/Beef-Pho_6.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🍜 쌀국수 세트</h3>
+                        <p class="text-slate-300 text-sm">깊고 진한 육수의 베트남 대표 요리</p>
+                    </div>
+                </div>
+
+                <!-- 2. Ssambap -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://www.bonberi.com/wp-content/uploads/2019/07/190625-retouched-Med-Res-6260.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🥬 쌈밥 정식</h3>
+                        <p class="text-slate-300 text-sm">신선한 채소와 고기의 건강한 조화</p>
+                    </div>
+                </div>
+
+                <!-- 3. Mango Buffet -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/a6/29/15/mango-bay-resort.jpg?h=-1&s=1&w=700" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🥭 망고 뷔페</h3>
+                        <p class="text-slate-300 text-sm">해산물과 아시안/서양식의 향연</p>
+                    </div>
+                </div>
+
+                <!-- 4. Kimchi Stew -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://www.daringgourmet.com/wp-content/uploads/2013/03/Pajeon-1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🥘 김치전골 + 파전</h3>
+                        <p class="text-slate-300 text-sm">한국인의 소울푸드, 얼큰함과 고소함</p>
+                    </div>
+                </div>
+
+                <!-- 5. Pork Belly -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://cf.creatrip.com/original/spot/9808/tc7wh09kbxis5mhnrlfolouy9ryy3pw4.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🥓 삼겹살 무제한</h3>
+                        <p class="text-slate-300 text-sm">여행의 밤을 책임지는 무제한 BBQ</p>
+                    </div>
+                </div>
+
+                <!-- 6. Vietnamese Set -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl">
+                    <img src="https://blog.premierresidencesphuquoc.com/wp-content/uploads/2024/12/vietnamese-restaurant-phu-quoc-7.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🇻🇳 베트남 특가정식</h3>
+                        <p class="text-slate-300 text-sm">현지 식재료로 차려낸 정통 로컬 한상</p>
+                    </div>
+                </div>
+
+                <!-- 7. Bulgogi (Spanning 2 cols on large screens for layout balance) -->
+                <div class="group relative h-72 rounded-2xl overflow-hidden cursor-pointer shadow-xl md:col-span-2">
+                    <img src="https://www.spoonforkbacon.com/wp-content/uploads/2021/05/beef-bulgogi.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full">
+                        <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">🥩 소불고기 정식</h3>
+                        <p class="text-slate-300 text-sm">남녀노소 누구나 좋아하는 프리미엄 한식</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+             <div class="w-full h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 relative">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251666.86242337775!2d103.85694389146522!3d10.22818788448839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a78c62b49eda17%3A0x8ade74b4703140a3!2z67Kg7Yq464KoIO2KqOyXlCDruqTpjaQg7ZG46r647JilIOy4hA!5e0!3m2!1sko!2skr!4v1716260000000!5m2!1sko!2skr" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="grayscale-[30%] hover:grayscale-0 transition duration-500">
+                </iframe>
+                <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur px-6 py-4 rounded-xl shadow-lg text-slate-800 max-w-xs">
+                    <h4 class="font-bold mb-1 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-red-500"></i> Explore Phu Quoc</h4>
+                    <p class="text-xs text-slate-500">지도를 확대/축소하여 주요 관광지 위치를 확인하세요. 북부에서 남부까지 차로 약 1시간 소요됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Travel Important Notice -->
+    <section class="py-16 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-amber-100 flex flex-col md:flex-row gap-8 items-start">
+                <div class="md:w-1/3">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-8 h-8 text-amber-500"></i>
+                        여행 필수 유의사항
+                    </h3>
+                    <p class="text-slate-500">즐겁고 안전한 여행을 위해 반드시 확인해주세요.</p>
+                </div>
+                <div class="md:w-2/3 space-y-6">
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-blue-600"></i> 미성년자 입국 규정 (중요)</h4>
+                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-600 space-y-1">
+                            <p><strong>• 부모 미동반 (만 14세 미만):</strong> 영문 부모동의서 + 영문 가족관계증명서 + <span class="text-red-500 font-bold">공증서 필수 지참</span></p>
+                            <p><strong>• 부모 동반 시:</strong> 영문 가족관계증명서 지참 권장</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i data-lucide="map" class="w-4 h-4 text-blue-600"></i> 공항 미팅 장소</h4>
+                        <div class="bg-slate-50 p-4 rounded-lg text-sm text-slate-600">
+                            <p>베트남 법령상 공항 내 외국인 가이드 출입이 제한됩니다.</p>
+                            <p class="mt-1">
+                                • <strong>공항 내부:</strong> 현지인 가이드 미팅<br>
+                                • <strong>공항 외부:</strong> 한국인 가이드 미팅
+                            </p>
+                            <p class="mt-1 text-xs text-slate-400">* 베트남 입국 시 별도 출입국 신고서는 작성하지 않습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <section id="contact" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">예약 및 문의 (Contact Us)</h2>
+            <!-- 3인 구조로 변경 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 max-w-6xl mx-auto">
+                <!-- 대표 -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition group transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 group-hover:scale-110 transition">
+                        <i data-lucide="user" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">이재명</h3>
+                    <p class="text-slate-500 mb-4 font-medium text-sm">대표 (CEO)</p>
+                    <a href="tel:010-9443-7881" class="text-xl font-bold text-blue-600 hover:text-blue-700 tracking-tight block bg-blue-50 py-2 rounded-lg hover:bg-blue-100 transition">010-9443-7881</a>
+                </div>
+                
+                <!-- 실장 -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition group transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600 group-hover:scale-110 transition">
+                        <i data-lucide="phone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">허나연</h3>
+                    <p class="text-slate-500 mb-4 font-medium text-sm">실장 (Manager)</p>
+                    <a href="tel:010-5066-0433" class="text-xl font-bold text-green-600 hover:text-green-700 tracking-tight block bg-green-50 py-2 rounded-lg hover:bg-green-100 transition">010-5066-0433</a>
+                </div>
+
+                <!-- 이사 -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 hover:shadow-xl transition group transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-6 text-amber-600 group-hover:scale-110 transition">
+                        <i data-lucide="star" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">조혁</h3>
+                    <p class="text-slate-500 mb-4 font-medium text-sm">이사 (Director)</p>
+                    <a href="tel:010-4249-4026" class="text-xl font-bold text-amber-600 hover:text-amber-700 tracking-tight block bg-amber-50 py-2 rounded-lg hover:bg-amber-100 transition">010-4249-4026</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6 flex flex-col items-center gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-center w-full gap-8">
+                <div class="text-center md:text-left">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s16000/logo.png" alt="Tourmaker Logo" class="h-9 opacity-80 mb-4 mx-auto md:mx-0 object-contain bg-white/10 rounded px-2">
+                    <p class="text-sm">Tourmaker - Your Best Travel Partner in Vietnam</p>
+                </div>
+                <div class="text-sm text-center md:text-right space-y-2">
+                    <p>Copyright © 2025 Tourmaker. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals (No changes in logic, just existing structure) -->
+    <!-- Modal: Premium (Signature) -->
+    <div id="modal-premium" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-bg p-4 opacity-0 transition-opacity duration-300" onclick="closeModal(event, 'modal-premium')">
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 custom-scrollbar" onclick="event.stopPropagation()">
+            <div class="sticky top-0 bg-white p-5 border-b flex justify-between items-center z-10">
+                <div>
+                    <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Signature Package</span>
+                    <h3 class="text-2xl font-bold text-slate-900">✈️ 양양-푸꾸옥 직항 전세기 (3박5일)</h3>
+                </div>
+                <button onclick="closeModal(null, 'modal-premium')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 md:p-8 space-y-10">
+                <!-- Flight & Conditions -->
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i> 출발일 (2026년)</h4>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li><span class="font-bold text-slate-800">1월:</span> 06(화), 10(토), 14(수), 18(일), 22(목), 26(월), 30(금)</li>
+                                <li><span class="font-bold text-slate-800">2월:</span> 03(화)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-blue-600"></i> 모집 조건</h4>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>1인부터 신청 가능 (2인 1실 기준)</li>
+                                <li>최소 출발: 20명 이상 (조인 행사)</li>
+                                <li>전 일정 전용 버스 이동</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Highlights -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4 text-lg">🎁 핵심 특전 (Highlights)</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-amber-500 mx-auto mb-2"></i>
+                            <span class="text-xs font-bold text-slate-700 block">전신마사지<br>90분</span>
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <i data-lucide="ticket" class="w-6 h-6 text-amber-500 mx-auto mb-2"></i>
+                            <span class="text-xs font-bold text-slate-700 block">틴호아쇼<br>관람</span>
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <i data-lucide="ship" class="w-6 h-6 text-amber-500 mx-auto mb-2"></i>
+                            <span class="text-xs font-bold text-slate-700 block">그랜드월드<br>곤돌라</span>
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <i data-lucide="castle" class="w-6 h-6 text-amber-500 mx-auto mb-2"></i>
+                            <span class="text-xs font-bold text-slate-700 block">빈원더스<br>(테마파크)</span>
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                            <i data-lucide="mountain" class="w-6 h-6 text-amber-500 mx-auto mb-2"></i>
+                            <span class="text-xs font-bold text-slate-700 block">혼똔섬<br>케이블카</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Itinerary Timeline -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg border-b pb-2">🗓️ 상세 일정표</h4>
+                    <div class="relative border-l-2 border-slate-200 ml-3 space-y-10">
+                        <!-- Day 1 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">1일차 <span class="text-sm font-normal text-slate-500 ml-2">양양 ✈️ 푸꾸옥</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><span class="font-bold">08:30</span> 양양 출발 (VJ2931) → <span class="font-bold">12:50</span> 푸꾸옥 도착</p>
+                                <p class="bg-slate-50 p-2 rounded">중식: 쌀국수 세트</p>
+                                <ul class="list-disc list-inside pl-2 space-y-1 text-slate-700">
+                                    <li>가이드 미팅 후 딘커우 사원 관광</li>
+                                    <li>핫플 카페 방문 (음료 1잔 포함)</li>
+                                    <li><span class="text-amber-600 font-bold">전신 마사지 90분 체험</span> (팁 별도)</li>
+                                </ul>
+                                <p class="bg-slate-50 p-2 rounded">석식: 쌈밥 정식</p>
+                                <p class="text-xs text-slate-500 mt-2">🏨 호텔: 베스트웨스턴 / 노보텔 / 소나가 / 윈덤 / 래디슨블루 / 모벤픽 (5성급)</p>
+                            </div>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">2일차 <span class="text-sm font-normal text-slate-500 ml-2">남부 투어 (혼똔섬 & 선셋타운)</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p class="bg-slate-50 p-2 rounded">조식: 호텔식</p>
+                                <ul class="list-disc list-inside pl-2 space-y-1 text-slate-700">
+                                    <li><span class="font-bold">세계 최장 해상 케이블카</span> 탑승 (편도 30분)</li>
+                                    <li>혼똔섬 썬월드 (네이처파크 + 워터파크) 자유시간</li>
+                                    <li>선셋타운 관광 (작은 유럽)</li>
+                                    <li>부이페스트 야시장 투어</li>
+                                </ul>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 망고레스토랑 뷔페</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 김치전골 + 파전</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Day 3 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">3일차 <span class="text-sm font-normal text-slate-500 ml-2">북부 투어 (빈원더스 & 그랜드월드)</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p class="bg-slate-50 p-2 rounded">조식: 호텔식</p>
+                                <ul class="list-disc list-inside pl-2 space-y-1 text-slate-700">
+                                    <li><span class="font-bold">빈원더스</span> (테마파크 + 아쿠아리움)</li>
+                                    <li>그랜드월드 자유관광 + <span class="text-amber-600 font-bold">곤돌라 탑승</span></li>
+                                    <li><span class="text-amber-600 font-bold">틴호아쇼</span> 관람 (베트남 최대 야간 쇼)</li>
+                                </ul>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 현지식</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 삼겹살 무제한</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">4일차 <span class="text-sm font-normal text-slate-500 ml-2">중부 투어 & 굿바이</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p class="bg-slate-50 p-2 rounded">조식: 호텔식</p>
+                                <ul class="list-disc list-inside pl-2 space-y-1 text-slate-700">
+                                    <li>체크아웃 후 호국사 방문</li>
+                                    <li>쇼핑센터 방문 2회 (침향 / 커피)</li>
+                                    <li>수오이짠 계곡, 코코넛 수용소, 진주 박물관</li>
+                                    <li>후추 농장 및 쯔엉동 야시장 투어</li>
+                                </ul>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 베트남 특가정식</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 소불고기 정식</p>
+                                </div>
+                                <p class="mt-2 text-slate-500">→ 공항으로 이동</p>
+                            </div>
+                        </div>
+                        <!-- Day 5 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-slate-600 mb-2">5일차 <span class="text-sm font-normal text-slate-500 ml-2">도착</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p><span class="font-bold">00:05</span> 푸꾸옥 출발 (VJ2930) → <span class="font-bold">07:30</span> 양양 도착</p>
+                                <p class="text-xs text-slate-500">* 안녕히 가십시오.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Inclusions / Notes -->
+                <div class="grid md:grid-cols-2 gap-8 pt-4 border-t">
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-3">✅ 포함 사항</h4>
+                        <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                            <li>왕복 항공료 (TAX, 유류할증료 포함)</li>
+                            <li>전 일정 5성급 호텔 (2인1실)</li>
+                            <li>전용 차량, 식사, 관광지 입장료</li>
+                            <li>한국어 가이드/기사 및 <span class="font-bold text-red-500">기사/가이드 팁 포함</span></li>
+                            <li>여행자 보험</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-3">❌ 불포함 사항</h4>
+                        <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                            <li>기타 개인 경비 (매너팁 등)</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Important Notes -->
+                <div class="bg-amber-50 rounded-xl p-5 text-sm text-slate-700">
+                    <h4 class="font-bold text-amber-600 mb-2">📝 주요 유의사항</h4>
+                    <ul class="list-disc list-inside space-y-1 text-xs md:text-sm">
+                        <li><strong>계약금:</strong> 예약 시 1인 30만원 필수 (전세기 특별약관 적용)</li>
+                        <li><strong>쇼핑:</strong> 총 2회 방문 (침향, 커피)</li>
+                        <li><strong>아동:</strong> 만 12세 미만 노베드 조건 (엑스트라베드 추가 시 성인요금)</li>
+                        <li><strong>싱글차지:</strong> 독실 사용 시 별도 비용 발생</li>
+                        <li><strong>입국 서류:</strong> 만 14세 미만 부모 미동반 시 공증서류 필수 (부모 동반 시 영문 등본 권장)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Value Pack (Semi) -->
+    <div id="modal-value" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-bg p-4 opacity-0 transition-opacity duration-300" onclick="closeModal(event, 'modal-value')">
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 custom-scrollbar" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white p-5 border-b flex justify-between items-center z-10">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Smart Value Pack</span>
+                    <h3 class="text-2xl font-bold text-slate-900">🛍️ 스마트 실속팩 (세미 패키지) 3박5일</h3>
+                </div>
+                <button onclick="closeModal(null, 'modal-value')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            
+            <div class="p-6 md:p-8 space-y-10">
+                <!-- Flight Info -->
+                <div class="bg-blue-50 rounded-xl p-4 text-sm text-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div><strong>✈️ VJ2931</strong> 양양 08:30 → 푸꾸옥 12:50</div>
+                    <div class="hidden md:block text-slate-400">|</div>
+                    <div><strong>✈️ VJ2930</strong> 푸꾸옥 00:05 → 양양 07:30</div>
+                </div>
+
+                <!-- Itinerary -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg border-b pb-2">🗓️ 상세 일정표</h4>
+                    <div class="relative border-l-2 border-slate-200 ml-3 space-y-10">
+                        <!-- Day 1 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">1일차 <span class="text-sm font-normal text-slate-500 ml-2">도착 및 힐링</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p>중식(쌀국수 세트) 후 <strong>딘커우 사원</strong> 및 핫플 카페 방문</p>
+                                <p><span class="text-blue-600 font-bold">전신 마사지 60분</span> (팁 별도)</p>
+                                <p>석식(쌈밥 정식) 후 호텔 체크인</p>
+                                <p class="text-xs text-slate-500 mt-1">🏨 호텔: 무엉탄 럭셔리 / 오션펄 (4성급)</p>
+                            </div>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">2일차 <span class="text-sm font-normal text-slate-500 ml-2">남부 핵심 투어</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p>코코넛 수용소, 사오비치 자유시간, 안터이 현지 시장</p>
+                                <p>선셋타운 및 <strong>키스브릿지</strong> 관광</p>
+                                <p>부이페스트 야시장 투어</p>
+                                <div class="bg-yellow-50 p-3 rounded border border-yellow-100 my-2">
+                                    <strong class="text-amber-600">💡 추천 선택관광:</strong> 혼똔섬 케이블카($50), 키스오브더씨 쇼($50)
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 현지식</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 김치전골+파전</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Day 3 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">3일차 <span class="text-sm font-normal text-slate-500 ml-2">북부 자유 일정</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p>그랜드월드 자유관광 (24시간 잠들지 않는 도시)</p>
+                                <div class="bg-yellow-50 p-3 rounded border border-yellow-100 my-2">
+                                    <strong class="text-amber-600">💡 추천 선택관광:</strong> 빈원더스($60) 또는 호핑투어($60)
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 현지식</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 꽃게탕 세트</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-blue-600 mb-2">4일차 <span class="text-sm font-normal text-slate-500 ml-2">중부 투어 & 쇼핑</span></h5>
+                            <div class="text-sm text-slate-600 space-y-2">
+                                <p>호국사, 수오이짠 계곡, 진주박물관, 후추농장</p>
+                                <p>쯔엉동 야시장 방문</p>
+                                <p class="text-xs text-slate-500">* 쇼핑센터 3회 방문</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <p class="bg-slate-50 p-2 rounded">중식: 베트남 가정식</p>
+                                    <p class="bg-slate-50 p-2 rounded">석식: 불고기 세트</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Day 5 -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow"></div>
+                            <h5 class="text-lg font-bold text-slate-600 mb-2">5일차 <span class="text-sm font-normal text-slate-500 ml-2">도착</span></h5>
+                            <div class="text-sm text-slate-600">
+                                <p>양양 국제공항 도착</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Airtel (Free) -->
+    <div id="modal-airtelle" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-bg p-4 opacity-0 transition-opacity duration-300" onclick="closeModal(event, 'modal-airtelle')">
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 custom-scrollbar" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white p-5 border-b flex justify-between items-center z-10">
+                <div>
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Free & Easy</span>
+                    <h3 class="text-2xl font-bold text-slate-900">✈️ 내맘대로 에어텔 (뉴월드 풀빌라) 3박5일</h3>
+                </div>
+                <button onclick="closeModal(null, 'modal-airtelle')" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            
+            <div class="p-6 md:p-8 space-y-10">
+                <!-- Summary -->
+                <div class="bg-green-50 rounded-xl p-6 border border-green-100">
+                    <h4 class="font-bold text-green-800 mb-2 text-lg">🏨 뉴월드 리조트 (New World Resort)</h4>
+                    <p class="text-sm text-green-700 mb-4">최고급 프라이빗 풀빌라에서 즐기는 완벽한 자유 휴양</p>
+                    <ul class="text-sm text-green-800 space-y-1 list-disc list-inside">
+                        <li><strong>포함:</strong> 왕복 항공권 + 리조트 3박 (조식 포함) + 여행자보험</li>
+                        <li><strong>불포함:</strong> 중/석식, 차량/가이드, 개인경비</li>
+                        <li><strong>이동:</strong> 공항-리조트 간 호텔 무료 셔틀 이용 (사전예약 필수)</li>
+                    </ul>
+                </div>
+
+                <!-- Itinerary -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg border-b pb-2">🗓️ 일정표 (자유)</h4>
+                    <div class="space-y-6 text-sm text-slate-600">
+                        <div class="flex gap-4">
+                            <div class="font-bold text-slate-800 w-12">1일차</div>
+                            <div>
+                                <p>푸꾸옥 도착 후 호텔 셔틀 탑승장 이동 -> 리조트 이동 (약 60분)</p>
+                                <p>체크인(15:00) 후 자유 휴양</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="font-bold text-slate-800 w-12">2~3일차</div>
+                            <div>
+                                <p>전일 리조트 내 자유 시간 (조식 포함)</p>
+                                <p class="text-xs text-slate-500">* 부대시설: 프라이빗 비치, 인피니티 풀, 스파 등 이용</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="font-bold text-slate-800 w-12">4일차</div>
+                            <div>
+                                <p>조식 후 12:00 체크아웃</p>
+                                <p>짐 보관 후 개별 자유여행 또는 부대시설 이용</p>
+                                <p>호텔 셔틀 이용하여 공항 이동</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Policy -->
+                <div class="bg-slate-50 p-6 rounded-xl text-sm text-slate-700 space-y-4">
+                    <h4 class="font-bold text-slate-900 border-b pb-2">⚠️ 에어텔 특별 규정 (필독)</h4>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>예약금:</strong> 1인 300,000원 (전세기 특별약관 적용)</li>
+                        <li><strong>풀빌라 규정:</strong>
+                            <ul class="pl-5 list-circle space-y-1 mt-1 text-slate-600">
+                                <li>현재 3베드룸 풀빌라만 예약 가능 (2/4베드룸 별도 문의)</li>
+                                <li>엑스트라베드 추가 불가</li>
+                                <li>2베드룸(성인4), 3베드룸(성인6) 의무 요금 적용</li>
+                            </ul>
+                        </li>
+                        <li><strong>아동 요금:</strong> 만 12세 미만 89만원/인 (NO COMM, 부모 동반 침대 사용)</li>
+                        <li><strong>식사 추가 (사전예약):</strong>
+                            <ul class="pl-5 list-circle space-y-1 mt-1 text-slate-600">
+                                <li>하프보드(1회): 성인 6만원 / 아동 3만원</li>
+                                <li>풀보드(2회): 성인 9만원 / 아동 5만원</li>
+                            </ul>
+                        </li>
+                        <li><strong>레이트 체크아웃 (18:00까지):</strong>
+                            <span class="block pl-5 text-slate-600">2베드(22만원) / 3베드(27만원) / 4베드(40만원) 추가</span>
+                        </li>
+                        <li><strong>취소료:</strong> 투숙 25일 전 취소 시 전액 수수료 부과</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Logo Image URLs (Tourmaker Brand)
+        // Standard Logo (Rectangular) - Used for both white and color versions now
+        const logoUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s16000/logo.png";
+
+        // Tab Switching Function
+        function switchTab(tabId) {
+            // Hide all contents
+            ['tour-north', 'tour-central', 'tour-south'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                document.getElementById(id).classList.remove('grid'); // Remove grid to hide properly
+            });
+            
+            // Reset button styles
+            const buttons = ['btn-north', 'btn-central', 'btn-south'];
+            buttons.forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                btn.className = "px-6 py-2 rounded-full font-bold text-sm transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
+            });
+
+            // Show selected content
+            const selectedContent = document.getElementById(tabId);
+            selectedContent.classList.remove('hidden');
+            selectedContent.classList.add('grid');
+
+            // Style selected button
+            const selectedBtnId = 'btn-' + tabId.split('-')[1];
+            const selectedBtn = document.getElementById(selectedBtnId);
+            
+            // Different active colors based on region
+            if (tabId === 'tour-north') {
+                selectedBtn.className = "px-6 py-2 rounded-full font-bold text-sm transition-all bg-blue-500 text-white shadow-lg shadow-blue-200 transform scale-105";
+            } else if (tabId === 'tour-central') {
+                selectedBtn.className = "px-6 py-2 rounded-full font-bold text-sm transition-all bg-green-500 text-white shadow-lg shadow-green-200 transform scale-105";
+            } else {
+                selectedBtn.className = "px-6 py-2 rounded-full font-bold text-sm transition-all bg-orange-500 text-white shadow-lg shadow-orange-200 transform scale-105";
+            }
+        }
+
+        // Modal Functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalContent = modal.querySelector('div');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event, modalId) {
+            if (event && !event.target.closest('.modal-bg')) return;
+            const modal = document.getElementById(modalId);
+            const modalContent = modal.querySelector('div');
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('navbar');
+            const navLinks = document.getElementById('nav-links');
+            const logo = document.getElementById('logo-img');
+
+            // Using the same logo file, just changing header background style
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                header.classList.remove('bg-transparent');
+                navLinks.classList.remove('text-white/90');
+                navLinks.classList.add('text-slate-600');
+                // logo.src = logoUrl; // No need to switch source if using same png
+            } else {
+                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                header.classList.add('bg-transparent');
+                navLinks.classList.add('text-white/90');
+                navLinks.classList.remove('text-slate-600');
+                // logo.src = logoUrl;
+            }
+        });
+
+        // Initialize with South Tab Active (default matching golden sunset theme)
+        switchTab('tour-south');
+    </script>
+</body>
+</html>
